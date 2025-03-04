@@ -60,4 +60,3 @@ def do_run_migrations(connection):
         context.run_migrations()
 
 run_migrations_online()
-# Compare this snippet from alembic/env.py:

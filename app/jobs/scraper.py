@@ -25,7 +25,6 @@ async def scrape_and_store_news():
             try:
                 logging.info(f"🔍 Scraping news for {symbol}...")
 
-                # Fetch news
                 news_results = fetch_stock_news(symbol)
                 if not news_results:
                     logging.warning(f"⚠️ No news found for {symbol}")
@@ -33,7 +32,6 @@ async def scrape_and_store_news():
 
                 logging.info(f"✅ Found {len(news_results)} articles for {symbol}")
 
-                # Extract content
                 urls = [news["url"] for news in news_results]
                 extracted_articles = extract_news_content(urls)
 
@@ -72,7 +70,7 @@ async def store_scraped_news(symbol: str, articles: list, db: Session):
 
     except SQLAlchemyError as db_error:
         logging.error(f"❌ Database error while storing {symbol} articles: {db_error}", exc_info=True)
-        await db.rollback()  # Rollback changes in case of failure
+        await db.rollback()
 
     except Exception as e:
         logging.error(f"❌ Unexpected error in `store_scraped_news()`: {e}", exc_info=True)

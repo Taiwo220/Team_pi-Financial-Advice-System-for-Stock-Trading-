@@ -5,7 +5,7 @@ import uuid
 import datetime
 from datetime import timedelta
 
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")  # Small, fast, and effective
+embedding_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
 
 def chunk_text(text, chunk_size=256, overlap=50):
     """
@@ -52,7 +52,7 @@ def store_news_embeddings(stock_symbol, articles):
         text_chunks = chunk_text(article["raw_content"])
 
         for chunk in text_chunks:
-            embedding = embedding_model.encode(chunk).tolist()  # Convert to list for ChromaDB
+            embedding = embedding_model.encode(chunk).tolist()
             vector_store.add(
                 ids=[news_id], 
                 metadatas=[{"symbol": stock_symbol, "headline": (f'{article["raw_content"][:150]}'), "url": article["url"]}],
@@ -68,7 +68,6 @@ def retrieve_relevant_news(query, top_k=3):
     vector_store = get_vector_store()
     query_embedding = embedding_model.encode(query).tolist()
 
-    # Search for the most relevant embeddings
     results = vector_store.query(
         query_embeddings=[query_embedding],
         n_results=top_k
@@ -94,14 +93,12 @@ def cleanup_old_news():
     vector_store = get_vector_store()
     cutoff_time = datetime.utcnow() - timedelta(hours=24)
 
-    # Retrieve all stored data
     all_data = vector_store.get()
 
     if not all_data["ids"]:
         logging.info("✅ No old news to clean up.")
         return
 
-    # Find outdated IDs
     old_ids = []
     for i, metadata in enumerate(all_data["metadatas"]):
         stored_time = datetime.strptime(metadata.get("timestamp", ""), "%Y-%m-%d %H:%M:%S")
