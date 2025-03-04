@@ -17,7 +17,7 @@ else:
 # Initialize Tavily Client
 tavily_client = TavilyClient(api_key=TAVILY_API_KEY)
 
-def fetch_stock_news(symbol: str, max_results: int = 5):
+def fetch_stock_news(symbol: str, max_results: int = 7):
     """
     Fetches the latest stock news using the Tavily Search API.
     """
@@ -30,6 +30,7 @@ def fetch_stock_news(symbol: str, max_results: int = 5):
             topic="news",
             search_depth="advanced",
             max_results=max_results,
+            include_domains=["finance.yahoo.com", "marketwatch.com", "https://www.cnbc.com"],
             time_range="day",
             include_answer=False,
             include_raw_content=True,

@@ -14,7 +14,11 @@ async def scrape_and_store_news():
     """
     Scrapes stock news, stores in the database, and updates vector DB.
     """
-    stock_symbols = ["NVDA", "TSLA", "GOOG"]
+    stock_symbols = [
+    "AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "BRK.B", "AVGO", "LLY", "WMT",
+    "JPM", "V", "MA", "TSLA", "PG", "UNH", "XOM", "JNJ", "HD", "CVX", "NVF"
+    "MRK", "ABBV", "PEP", "KO", "PFE", "CSCO", "NKE", "DIS", "ORCL"
+]
 
     async for db in get_db():
         for symbol in stock_symbols:

@@ -23,7 +23,7 @@ def generate_financial_advice(query, retrieved_news):
     Here are the latest stock news articles relevant to the query:
     {retrieved_news}
 
-    Based on this information, analyze whether the user should **buy, sell, or hold** the stock. Provide clear reasons, advantages and disadvantages, and risk factors, and avoid any disclaimers or suggestions to consult a financial advisor. Sound objective and confident in your advice. If the user should not take any action, explain why. If the user says that they are high risk investors, provide advice accordingly.
+    Based on this information, analyze whether the user should **buy, sell, or hold** the stock. Provide clear reasons, advantages and disadvantages, and risk factors, and avoid any disclaimers or suggestions to consult a financial advisor. Sound objective and confident in your advice.
     """
 
     try:
