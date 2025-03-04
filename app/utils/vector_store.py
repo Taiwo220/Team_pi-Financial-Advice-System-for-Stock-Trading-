@@ -18,6 +18,29 @@ def chunk_text(text, chunk_size=256, overlap=50):
         chunks.append(chunk)
     return chunks
 
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import nltk
+
+# Ensure VADER lexicon is downloaded
+nltk.download("vader_lexicon")
+
+# Initialize Sentiment Analyzer
+sentiment_analyzer = SentimentIntensityAnalyzer()
+
+def analyze_sentiment(text):
+    """
+    Analyzes sentiment of the news text.
+    Returns: Positive, Neutral, or Negative.
+    """
+    score = sentiment_analyzer.polarity_scores(text)["compound"]
+    
+    if score > 0.05:
+        return "Positive"
+    elif score < -0.05:
+        return "Negative"
+    else:
+        return "Neutral"
+
 def store_news_embeddings(stock_symbol, articles):
     """
     Converts news articles into embeddings and stores them in ChromaDB.
