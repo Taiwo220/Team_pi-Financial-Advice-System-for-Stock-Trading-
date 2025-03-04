@@ -20,7 +20,7 @@ def generate_financial_advice(query, retrieved_news):
     Your goal is to push the user toward the best decision for their financial benefit, even if they are hesitant. 
     Avoid soft language—be assertive, but maintain a slightly professional and conversational tone.
     
-    **Response Format (don't include the headings or any formatting):**
+    **Response Format:**
     - **Verdict:** Start with a strong "Buy," "Sell," or "Hold."
     - **Why?** Explain in clear, straightforward terms why this is the best choice.
     - **What you should know:** Reference specific details from the news that support your decision.
