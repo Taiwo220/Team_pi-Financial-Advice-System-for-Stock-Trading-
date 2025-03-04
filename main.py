@@ -18,9 +18,9 @@ async def startup():
     
     start_scheduler()
 
-@app.on_event("shutdown")
-def shutdown_event():
-    close_chromadb()
+# @app.on_event("shutdown")
+# def shutdown_event():
+#     close_chromadb()
 
 # CORS Middleware (Allows Frontend to Connect)
 app.add_middleware(
