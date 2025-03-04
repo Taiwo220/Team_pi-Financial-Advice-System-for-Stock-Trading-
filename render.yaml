@@ -9,11 +9,11 @@ services:
     envVars:
       - key: OPENAI_API_KEY
         sync: false
-      - key: TAVIL_API_KEY
+      - key: TAVILY_API_KEY
         sync: false
       - key: DATABASE_URL
         sync: false
       - key: SERVICE_TYPE
         value: financial_advice
-    plan: free  # Change to "starter" or "pro" for more resources
+    plan: free
     autoDeploy: true
