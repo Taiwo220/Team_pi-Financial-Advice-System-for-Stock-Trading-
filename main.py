@@ -26,7 +26,7 @@ async def startup():
 # CORS Middleware (Allows Frontend to Connect)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins (Frontend React App can connect)
+    allow_origins=["https://marketmind-ai.vercel.app", "http://localhost:8080"],  # Allow all origins (Frontend React App can connect)
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
