@@ -3,6 +3,7 @@ from app.config.db import async_engine
 from app.models.base import Base
 from fastapi.middleware.cors import CORSMiddleware
 from app.jobs.scheduler import start_scheduler
+from app.jobs.scraper import scrape_and_store_news
 from app.routes import query
 from app.config.chromadb import close_chromadb
 import asyncio
@@ -18,6 +19,8 @@ async def startup():
 
     
     start_scheduler()
+
+    asyncio.run(scrape_and_store_news())
 
 # @app.on_event("shutdown")
 # def shutdown_event():
