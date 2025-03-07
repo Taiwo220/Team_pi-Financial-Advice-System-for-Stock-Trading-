@@ -20,8 +20,6 @@ async def startup():
     
     start_scheduler()
 
-    asyncio.run(scrape_and_store_news())
-
 # @app.on_event("shutdown")
 # def shutdown_event():
 #     close_chromadb()
