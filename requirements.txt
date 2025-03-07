@@ -28,8 +28,8 @@ fastapi-cli==0.0.7
 filelock==3.17.0
 flatbuffers==25.2.10
 fsspec==2025.2.0
-gunicorn
-uvicorn
+gunicorn==21.2.0
+uvicorn==0.27.1
 google-auth==2.38.0
 googleapis-common-protos==1.69.0
 greenlet==3.1.1
